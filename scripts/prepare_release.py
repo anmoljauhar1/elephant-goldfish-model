@@ -83,10 +83,7 @@ def prepare(root: Path, tag: str, output: Path, commit: str) -> None:
             encoding="utf-8",
         )
     except Exception:
-        try:
-            shutil.rmtree(output)
-        except OSError:
-            pass
+        shutil.rmtree(output, ignore_errors=True)
         raise
 
 
